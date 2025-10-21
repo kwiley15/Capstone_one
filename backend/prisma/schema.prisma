@@ -13,3 +13,24 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+
+model User {
+  id        Int     @id@default(autoincrement())
+  email     String  @unique
+  password  String  
+  createdAt DateTime @default(now())
+  maps      Map[]
+}
+
+
+
+model map {
+  id          Int     @id@default(autoincrement())
+  mapName     String  
+  fileUrl     String 
+  description String?
+  uploadedAt  DateTime @default(now())
+  userId      Int 
+  user        User  @relation(fields: [userId], references: [id])
+}
