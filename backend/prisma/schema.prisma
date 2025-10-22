@@ -15,22 +15,15 @@ datasource db {
 }
 
 
-model User {
-  id        Int     @id@default(autoincrement())
+model admin {
+  id        Int     @id @default(autoincrement())
   email     String  @unique
   password  String  
-  createdAt DateTime @default(now())
-  maps      Map[]
+  createdAt DateTime @default(now())  
 }
 
-
-
-model map {
-  id          Int     @id@default(autoincrement())
-  mapName     String  
-  fileUrl     String 
-  description String?
-  uploadedAt  DateTime @default(now())
-  userId      Int 
-  user        User  @relation(fields: [userId], references: [id])
+model user {
+  id        Int       @id @default(autoincrement())
+  email     String    @unique
+  tags      Int       
 }
