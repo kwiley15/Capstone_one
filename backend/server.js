@@ -7,7 +7,7 @@ const app = express();
 const prisma = new PrismaClient();
 
 app.use(cors()); // Allow frontend to access backend
-app.use(express.json()); // Parse JSON requests
+app.use(express.json());
 
 //Route to send email to all users
 app.post("/api/send-email", async (req, res) => {
